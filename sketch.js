@@ -3,6 +3,7 @@ let horizontalLinesY = [];
 let numLines = 100;
 let speed = 1;
 let t = 0;
+let mouseFactor = 0;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -32,7 +33,6 @@ function windowResized() {
 function mousePressed() {
     translate(mouseX, mouseY);
 
-
 }
 
 function draw() {
@@ -48,18 +48,19 @@ function draw() {
     // background(0, 0, 25);
     //strokeWeight(1);
     strokeWeight(t * 0.02);
-    t += .5;
+    t += 0.005 * (mouseY / 1000);
     noStroke();
 
     for (r = 1; r < TAU * 20; r += 0.2) {
         push() + translate(cos(r) * r * 9 + 360, sin(r) * r * 9 + 360 + (T = tan(r / 20 - t * 9) * 5))
-            + translate(width / 4, height / 4)
-            + fill(255, -T * 99) + rotate(r * 100)
+            + translate(width / 4, height / 4 - height / 8)
+            + fill(0, -T * 99) + rotate(r * 100)
+            + strokeWeight(0.1)
             + textSize(int(r) * 0.45)
             // + line(0, 0, 9 / T, 9 / T)
             //+ ellipse(0, 0, 9 / T + r, 9 / T)
-            + text(String.fromCodePoint(128000 + mouseX + int(r * .55 % 1164)), -T, 9 / T)
-            + pop();
+            + text(String.fromCodePoint(128100 + (frameCount % 100) + int(r * 0.55 % 1223)), -T, 9 / T)
+            + rotate(sin((frameCount / 1000))) + pop();
     }
     fill(255);
     // Draw and move vertical lines
