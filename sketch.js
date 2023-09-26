@@ -58,7 +58,7 @@ function draw() {
             + textSize(int(r) * 0.45)
             // + line(0, 0, 9 / T, 9 / T)
             //+ ellipse(0, 0, 9 / T + r, 9 / T)
-            + text(String.fromCodePoint(128000 + int(r * .55 % 1164)), -T, 9 / T)
+            + text(String.fromCodePoint(128000 + mouseX + int(r * .55 % 1164)), -T, 9 / T)
             + pop();
     }
     fill(255);
