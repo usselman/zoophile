@@ -56,7 +56,7 @@ function draw() {
             + translate(width / 4, height / 4 - height / 8)
             + fill(0, -T * 99) + rotate(r * 100)
             + strokeWeight(0.1)
-            + textSize(int(r) * 0.45)
+            + textSize(int(r) * 0.45 * 2)
             // + line(0, 0, 9 / T, 9 / T)
             //+ ellipse(0, 0, 9 / T + r, 9 / T)
             + text(String.fromCodePoint(128100 + (frameCount % 100) + int(r * 0.55 % 1223)), -T, 9 / T)
