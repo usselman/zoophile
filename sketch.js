@@ -45,8 +45,6 @@ function draw() {
     if (mouseIsPressed) {
         mousePressed();
     }
-    // background(0, 0, 25);
-    //strokeWeight(1);
     strokeWeight(t * 0.02);
     t += 0.005 * (mouseY / 1000);
     noStroke();
@@ -63,57 +61,9 @@ function draw() {
             + rotate(sin((frameCount / 1000))) + pop();
     }
     fill(255);
-    // Draw and move vertical lines
     stroke(0);
-    // for (let i = 0; i < verticalLinesX.length; i += (0.1)) {
-    //     strokeWeight(0.1);
-    //     line(verticalLinesX[i], 0, verticalLinesX[i], height / 2);
-    //     verticalLinesX[i] += speed / i;
-
-
-    //     // Reset line position when it goes out of canvas
-    //     if (verticalLinesX[i] > width || verticalLinesX[i] < 0) {
-    //         verticalLinesX[i] = 0;
-    //     }
-    //     line(100, 0, 100, height);
-    //     strokeWeight(0.5);
-    //     line(120, 0, 120, height);
-    //     line(200, 0, 200, height);
-    // }
-    //rotate(cos(45));
-
-    // Draw and move horizontal lines
-    // for (let i = 0; i < horizontalLinesY.length; i += (2.8)) {
-    //     strokeWeight(1);
-    //     line(0, horizontalLinesY[i], width / 4, horizontalLinesY[i]);
-    //     horizontalLinesY[i] -= speed / 10;
-    //     //noFill();
-    //     //fill(150, 75, 50);
-    //     fill(255);
-    //     //stroke(0);
-    //     // text("purpose-driven streetwear.", width / 2 + 5 * i * 0.25, 250);
-
-    //     // Reset line position when it goes out of canvas
-    //     if (horizontalLinesY[i] > height) {
-    //         horizontalLinesY[i] = 0;
-    //     } else if (horizontalLinesY[i] < 0) {
-    //         horizontalLinesY[i] = height;
-    //     }
-    //     line(0, 100, width, 100);
-    //     strokeWeight(1);
-    //     line(0, 120, width, 120);
-    // }
 
     fill(0, 0, 0);
-    // textSize(width / 25);
-    // textAlign(CENTER);
-    // text("Amāra", width / 2, height / 12);
-    // fill(255);
-    // text("Amāra", width / 2 + 5, height / 12 + 5);
-    // fill(255);
-    // rotate(sin(60));
-    // text("purpose-driven streetwear.", width / 2, height / 4);
-    // fill(255);
 
 
 }
