@@ -38,11 +38,11 @@ function draw() {
 
 function keyPressed() {
     if (keyCode === ENTER) {
-        captureScreenshot = true;
+        //captureScreenshot = true;
         // Set the flag to true before capturing
         //background(255); // Clear the canvas to remove text
         saveCanvas('mojiPaint', 'png'); // Capture the screenshot
-        captureScreenshot = false; // Reset the flag
+        //captureScreenshot = false; // Reset the flag
     }
     if (key === 'n') {
         // Switch to the next emoji in the array
@@ -64,6 +64,7 @@ function keyIsDown() {
 }
 
 function mouseMoved() {
+    captureScreenshot = true;
     // Draw the emoji
     text(String.fromCodePoint(emojis[currentEmojiIndex]), mouseX, mouseY);
 }
