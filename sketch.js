@@ -1,69 +1,69 @@
-let verticalLinesX = [];
-let horizontalLinesY = [];
-let numLines = 100;
-let speed = 1;
-let t = 0;
-let mouseFactor = 0;
+let emojis = [
+    128020, 128021, 128022, 128023, // Fish emojis
+    128512, 128513, 128514, 128515, // Face emojis
+    128516, 128517, 128518, 128519, // More face emojis
+    128522, 128523, 128524, 128525, // Even more face emojis
+    128526, 128527, 128528, 128529, // And more face emojis
+    128640, 128641, 128642, 128643, // Transport emojis
+    128644, 128645, 128646, 128647, // More transport emojis
+    128648, 128649, 128650, 128651, // And more transport emojis
+    128052, 128053, 128054, 128055, // Animal emojis
+    128056, 128057, 128058, 128059  // More animal emojis
+];
+
+let currentEmojiIndex = 10;
+let captureScreenshot = false;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(255);
     frameRate(100);
-    initializeLines();
-
-}
-
-function initializeLines() {
-    // Initialize vertical lines
-    for (let i = 0; i < numLines; i++) {
-        verticalLinesX[i] = i * width / numLines;
-    }
-
-    // Initialize horizontal lines
-    for (let i = 0; i < numLines; i++) {
-        horizontalLinesY[i] = i * height / numLines;
-    }
+    textSize(55);
+    //text("Press 'i' for instructions", 10, 60);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-    initializeLines();
-}
-
-function mousePressed() {
-    translate(mouseX, mouseY);
-
 }
 
 function draw() {
-    push();
-    if (frameCount / 100 % 2 == 0) {
+    if (!captureScreenshot) {
+        // Draw the text only if we're not capturing a screenshot
+        // textSize(55);
+        text("Drag to draw, click to create space.", 10, 60);
+        text("Press BACKSPACE to clear.", 10, 110);
+        text("Press 'n' to switch emoji.", 10, 160);
+    }
+}
+
+function keyPressed() {
+    if (keyCode === ENTER) {
+        captureScreenshot = true;
+        // Set the flag to true before capturing
+        //background(255); // Clear the canvas to remove text
+        saveCanvas('mojiPaint', 'png'); // Capture the screenshot
+        captureScreenshot = false; // Reset the flag
+    }
+    if (key === 'n') {
+        // Switch to the next emoji in the array
+        currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
+    }
+    if (keyCode === BACKSPACE) {
+        // Clear the canvas
         background(255);
-        rotate(cos(5));
-    };
-    pop();
-    if (mouseIsPressed) {
-        mousePressed();
     }
-    strokeWeight(t * 0.02);
-    t += 0.005 * (mouseY / 1000);
-    noStroke();
-
-    for (r = 1; r < TAU * 20; r += 0.2) {
-        push() + translate(cos(r) * r * 9 + 360, sin(r) * r * 9 + 360 + (T = tan(r / 20 - t * 9) * 5))
-            + translate(width / 4, height / 4 - height / 8)
-            + fill(0, -T * 99) + rotate(r * 100)
-            + strokeWeight(0.1)
-            + textSize(int(r) * 0.45 * 1.25)
-            // + line(0, 0, 9 / T, 9 / T)
-            //+ ellipse(0, 0, 9 / T + r, 9 / T)
-            + text(String.fromCodePoint(128100 + (frameCount % 100) + int(r * 0.55 % 1223)), -T, 9 / T)
-            + rotate(sin((frameCount / 1000))) + pop();
+    if (keyIsDown(73)) {
+        text("Drag to draw, click to create space.", 10, 60);
+        text("Press BACKSPACE to clear.", 10, 110);
+        text("Press 'n' to switch emoji.", 10, 160);
     }
-    fill(255);
-    stroke(0);
+}
 
-    fill(0, 0, 0);
+function keyIsDown() {
 
+}
 
+function mouseMoved() {
+    // Draw the emoji
+    text(String.fromCodePoint(emojis[currentEmojiIndex]), mouseX, mouseY);
 }
