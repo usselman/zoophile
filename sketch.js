@@ -18,7 +18,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(255);
     frameRate(100);
-    textSize(55);
+    textSize(windowWidth / 50);
     //text("Press 'i' for instructions", 10, 60);
 }
 
